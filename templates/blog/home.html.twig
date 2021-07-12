@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<h1>
+		{{ title }}
+	</h1>
+
+	{% if age > 18 %}
+		<p>
+			tu es majeur
+		</p>
+	{% else %}
+		<p>tu es mineur</p>
+	{% endif %}
+
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit nostrum enim autem ab, laudantium, officia aliquid dolore, aut iure accusamus magnam blanditiis perferendis qui possimus quas accusantium eligendi voluptatem facere!</p>
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit nostrum enim autem ab, laudantium, officia aliquid dolore, aut iure accusamus magnam blanditiis perferendis qui possimus quas accusantium eligendi voluptatem facere!</p>
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit nostrum enim autem ab, laudantium, officia aliquid dolore, aut iure accusamus magnam blanditiis perferendis qui possimus quas accusantium eligendi voluptatem facere!</p>
+{% endblock %}

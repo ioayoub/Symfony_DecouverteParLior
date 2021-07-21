@@ -9,12 +9,62 @@
 			{{ article.createdAt | date('d/m/Y') }}
 			à
 			{{ article.createdAt | date('H:i') }}
-			dans la catégorie Politique
+			dans la catégorie
+			{{ article.category.title }}
 		</div>
 		<div class="content">
 			<img src=" {{ article.image }} " alt="">
 			{{ article.content | raw }}
 		</div>
 	</article>
+	<a href=" {{ path('blog_show', {'id' : article.id}) }}/edit" class="btn btn-primary">Modifier</a>
 
+	<div id="comment">
+		<h1>
+			{{  article.comments | length }}
+			commentaires :
+		</h1>
+		{% for comment in article.comments %}
+
+			<div class="row">
+				<div class="col-3">
+					{{ comment.author }}
+					(
+					<small>
+						{{ comment.createdAt | date ("Y/m/d H:i") }}
+					</small>
+					)
+				</div>
+				<div class="col">
+					{{comment.content | raw }}
+				</div>
+			</div>
+
+
+		{% endfor %}
+
+		{% if app.user%}
+			{{ form_start(commentForm) }}
+			{{ form_row(commentForm.author, { 'label': 'Pseudo','attr' : {
+			
+		'placeholder':'Votre nom'
+		
+	}})
+																											}}
+
+			{{ form_row(commentForm.content, {'label' : 'Commentaire', 'attr' : {
+			
+		'placeholder':'Votre commentaire'
+		}}) 
+																			}}
+
+			<button class="btn btn-success" type="submit">
+				Envoyer</button>
+			{{ form_end(commentForm) }}
+
+		{% else %}
+			<h3>Vous devez être connecté pour pouvoir poster un commentaire</h3>
+			<a href="{{ path('security_login') }}" class="btn btn-primary">Se connecter</a>
+		{% endif %}
+	</div>
 {% endblock %}

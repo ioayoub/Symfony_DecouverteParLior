@@ -14,7 +14,8 @@
 					{{ article.createdAt | date('d/m/Y')}}
 					à
 					{{ article.createdAt | date('H:i') }}
-					dans la catégorie Politique
+					dans la catégorie
+					{{ article.category.title }}
 				</div>
 				<div class="content">
 					<img src=" {{ article.image	}} " alt="">

@@ -1,0 +1,10 @@
+ public function getChoices()
+    {
+        $choices = Property::HEAT;
+        $output = [];
+        foreach ($choices as $k => $v) {
+            $output[$v] = $k;
+        }
+
+        return $output;
+    }
